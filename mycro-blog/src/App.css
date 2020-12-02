@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: black;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tweet-box {
+  width: 600px;
+  height: 180px;
+  outline: none;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: #15202B;
+  color: #CCCCCC;
+  border: 2px solid #CCCCCC;
+}
+
+.tweet-box::placeholder {
+  color: #CCCCCC;
+}
+
+.inline-height {
+  height: fit-content;
+}
+
+.negative-margin {
+  margin-top: 100px;
+  margin-left: -90px;
+  background-color: #007BFF;
+  color: white;
+}
+
+.tweet-listitems {
+  border: none;
+  background-color: #343A40;
+}
+
+.my-navbar {
+  background-color: #343A40;
+  border: none;
+}
+
+.my-listgroup {
+  width: 600px;
+}
+
+.user-change {
+  width: 600px;
+  height: 61px;
+  background-color: #15202B;
+  color: white;
+  border-color: white;
+}
+
+.negative-button {
+  margin-top: -60px;
+  margin-right: -40px;
+}
