@@ -4,7 +4,7 @@ import { Container, Row } from 'reactstrap';
 import "./App.css";
 import { TweetContext } from "./context/TweetContext";
 
-function TweetList() {
+function TweetList(props) {
     return (
         <TweetContext.Consumer>
             {(context) =>

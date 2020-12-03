@@ -10,7 +10,7 @@ const tweetsURL = "https://micro-blogging-dot-full-stack-course-services.ew.r.ap
 class CreateTweet extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { maxExceeded: false, tweetText: '', userName: '', isLoading: true };
+        this.state = { maxExceeded: false, tweetText: '', userName: '' };
     }
 
     static contextType = TweetContext;
@@ -19,17 +19,14 @@ class CreateTweet extends React.Component {
         ls.get("userName") && this.setState({ userName: ls.get("userName") })
         axios.get(tweetsURL)
             .then(response => {
-                this.context.setTweets(response.data.tweets);
-                this.setState({ isLoading: false });
+                this.context.setTweets(response.data.tweets)
             })
         setInterval(() => {
             axios.get(tweetsURL)
                 .then(response => {
-                    this.props.handleLoads(true);
-                    this.context.setTweets(response.data.tweets);
-                    this.props.handleLoads(false);
+                    this.context.setTweets(response.data.tweets)
                 })
-        }, 6000)
+        }, 3000)
     }
 
     checkCharMax = (event) => {
@@ -50,12 +47,13 @@ class CreateTweet extends React.Component {
         else {
             const newTweet = {
                 'content': this.state.tweetText,
-                'userName': this.state.userName,
+                'userName': "n",
                 'date': new Date().toISOString(),
             }
             axios.post(tweetsURL, newTweet)
                 .catch(error => alert(error));
             this.setState({ tweetText: '' });
+            ls.set("userName", this.state.userName);
         }
     }
 
@@ -77,6 +75,7 @@ class CreateTweet extends React.Component {
                 </Container>
             </div>
         )
+
     }
 }
 

@@ -6,20 +6,16 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import { TweetContext } from "./context/TweetContext";
 import ProfilePage from "./ProfilePage";
-import NavLinks from "./NavLinks";
+import NavLinks from "./NavBar";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tweets: [], userName: '', isLoading: false};
+    this.state = { tweets: [], newestTweet: {}, userName: '', isLoading: false};
   }
 
   setTweets(tweets) {
     this.setState({ tweets: tweets })
-  }
-
-  handleLoads = (loading) => {
-    this.setState({isLoading: loading})
   }
 
   render() {
@@ -35,10 +31,10 @@ class App extends React.Component {
                 <ProfilePage />
               </Route>
               <Route path="/">
-                  <CreateTweet handleLoads={(loading) => this.handleLoads(loading)}/>
+                  <CreateTweet />
                   {this.state.isLoading ? <div className="d-flex justify-content-center" >
                   <Spinner color="primary" />
-                </div> : <TweetList/>}
+                </div> : <TweetList loads={this.state.isLoading} tweetInfo={this.state.tweets} newestTweet={this.state.newestTweet} />}
               </Route>
             </Switch>
           </Router>
